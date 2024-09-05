@@ -245,3 +245,146 @@
 		        }
 		    }
 		}
+
+
+
+
+
+
+
+
+
+
+
+//stack implementattion
+
+	#define MAX 100  // Maximum size of the stack
+
+	// Stack structure
+	struct Stack {
+	    int arr[MAX];
+	    int top;
+	};
+
+	// Function to initialize the stack
+	void initStack(struct Stack* stack) {
+	    stack->top = -1;
+	}
+
+	// Function to check if the stack is full
+	int isFull(struct Stack* stack) {
+	    return stack->top == MAX - 1;
+	}
+
+	// Function to check if the stack is empty
+	int isEmpty(struct Stack* stack) {
+	    return stack->top == -1;
+	}
+
+	// Function to push an element onto the stack
+	void push(struct Stack* stack, int value) {
+	    if (isFull(stack)) {
+	        printf("Stack Overflow! Cannot push %d\n", value);
+	    } else {
+	        stack->arr[++(stack->top)] = value;
+	        printf("Pushed %d onto the stack.\n", value);
+	    }
+	}
+
+	// Function to pop an element from the stack
+	int pop(struct Stack* stack) {
+	    if (isEmpty(stack)) {
+	        printf("Stack Underflow! Cannot pop.\n");
+	        return -1;
+	    } else {
+	        return stack->arr[(stack->top)--];
+	    }
+	}
+
+	// Function to peek at the top element of the stack
+	int top(struct Stack* stack) {
+	    if (isEmpty(stack)) {
+	        printf("Stack is empty!\n");
+	        return -1;
+	    } else {
+	        return stack->arr[stack->top];
+	    }
+	}
+
+
+
+
+
+
+
+
+
+
+
+//queue implementation
+
+
+	// Queue structure
+	struct Queue {
+	    int arr[MAX];
+	    int front;
+	    int rear;
+	};
+
+	// Function to initialize the queue
+	void initQueue(struct Queue* queue) {
+	    queue->front = -1;
+	    queue->rear = -1;
+	}
+
+	// Function to check if the queue is full
+	int isFull(struct Queue* queue) {
+	    return (queue->rear + 1) % MAX == queue->front;
+	}
+
+	// Function to check if the queue is empty
+	int isEmpty(struct Queue* queue) {
+	    return queue->front == -1;
+	}
+
+	// Function to enqueue (add) an element to the queue
+	void enqueue(struct Queue* queue, int value) {
+	    if (isFull(queue)) {
+	        printf("Queue Overflow! Cannot enqueue %d\n", value);
+	    } else {
+	        if (queue->front == -1) {
+	            queue->front = 0;  // First element
+	        }
+	        queue->rear = (queue->rear + 1) % MAX;
+	        queue->arr[queue->rear] = value;
+	        printf("Enqueued %d into the queue.\n", value);
+	    }
+	}
+
+	// Function to dequeue (remove) an element from the queue
+	int dequeue(struct Queue* queue) {
+	    if (isEmpty(queue)) {
+	        printf("Queue Underflow! Cannot dequeue.\n");
+	        return -1;
+	    } else {
+	        int value = queue->arr[queue->front];
+	        if (queue->front == queue->rear) {
+	            // Queue is now empty after the dequeue
+	            queue->front = -1;
+	            queue->rear = -1;
+	        } else {
+	            queue->front = (queue->front + 1) % MAX;
+	        }
+	        return value;
+	    }
+	}
+
+	// Function to peek at the front element of the queue
+	int peek(struct Queue* queue) {
+	    if (isEmpty(queue)) {
+	        printf("Queue is empty!\n");
+	        return -1;
+	    } else {
+	        return queue->arr[queue->front];
+	    }
+	}
