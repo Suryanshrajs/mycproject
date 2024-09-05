@@ -388,3 +388,96 @@
 	        return queue->arr[queue->front];
 	    }
 	}
+
+
+
+
+
+
+
+
+
+
+
+//Graph Implementation
+
+	// Structure to represent an adjacency list node
+	struct AdjListNode {
+	    int dest;
+	    struct AdjListNode* next;
+	};
+
+	// Structure to represent an adjacency list
+	struct AdjList {
+	    struct AdjListNode* head;  // Pointer to the head node of the list
+	};
+
+	// Structure to represent a graph
+	struct Graph {
+	    int V;  // Number of vertices
+	    struct AdjList* array;  // Array of adjacency lists
+	};
+
+	// Function to create a new adjacency list node
+	struct AdjListNode* createNode(int dest) {
+	    struct AdjListNode* newNode = (struct AdjListNode*)malloc(sizeof(struct AdjListNode));
+	    newNode->dest = dest;
+	    newNode->next = NULL;
+	    return newNode;
+	}
+
+	// Function to create a graph with V vertices
+	struct Graph* createGraph(int V) {
+	    struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
+	    graph->V = V;
+
+	    // Create an array of adjacency lists
+	    graph->array = (struct AdjList*)malloc(V * sizeof(struct AdjList));
+
+	    // Initialize each adjacency list as empty by making head NULL
+	    for (int i = 0; i < V; i++) {
+	        graph->array[i].head = NULL;
+	    }
+
+	    return graph;
+	}
+
+	// Function to add an edge to an undirected graph
+	void addEdge(struct Graph* graph, int src, int dest) {
+	    // Add an edge from src to dest. A new node is added to the adjacency list of src.
+	    struct AdjListNode* newNode = createNode(dest);
+	    newNode->next = graph->array[src].head;
+	    graph->array[src].head = newNode;
+
+	    // Since the graph is undirected, add an edge from dest to src also
+	    newNode = createNode(src);
+	    newNode->next = graph->array[dest].head;
+	    graph->array[dest].head = newNode;
+	}
+
+	// Function to print the adjacency list representation of the graph
+	void printGraph(struct Graph* graph) {
+	    for (int v = 0; v < graph->V; v++) {
+	        struct AdjListNode* pCrawl = graph->array[v].head;
+	        printf("Adjacency list of vertex %d\n head ", v);
+	        while (pCrawl) {
+	            printf("-> %d", pCrawl->dest);
+	            pCrawl = pCrawl->next;
+	        }
+	        printf("\n");
+	    }
+	}
+
+	// Function to free memory allocated for the graph
+	void freeGraph(struct Graph* graph) {
+	    for (int i = 0; i < graph->V; i++) {
+	        struct AdjListNode* temp = graph->array[i].head;
+	        while (temp) {
+	            struct AdjListNode* next = temp->next;
+	            free(temp);
+	            temp = next;
+	        }
+	    }
+	    free(graph->array);
+	    free(graph);
+	}
