@@ -1,11 +1,16 @@
-// Function to initialize the vector
-void initVector(Vector *v);
+#ifndef VECTOR_H
+#define VECTOR_H
 
-// Function to add an element to the vector
-void addElelment(Vector *v, int element);
+#include <stddef.h>
 
-// Function to print the elements of the vector
-void printVector(Vector *v) ;
+typedef struct {
+    int *data;
+    size_t size;
+    size_t capacity;
+} Vector;
 
-// Function to free the vector memory
-void freeVecotor(Vector *v);
+void vector_init(Vector *vec);
+void vector_push_back(Vector *vec, int value);
+void vector_free(Vector *vec);
+
+#endif

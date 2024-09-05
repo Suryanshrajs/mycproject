@@ -1,18 +1,19 @@
+#ifndef STACK_H
+#define STACK_H
 
-// Function to initialize the stack
-void initStack;
+typedef struct StackNode {
+    int data;
+    struct StackNode *next;
+} StackNode;
 
-// Function to check if the stack is full
-int isFull(struct Stack* stack) ;
+typedef struct {
+    StackNode *top;
+} Stack;
 
-// Function to check if the stack is empty
-int isEmpty(struct Stack* stack);
+void stack_init(Stack *stack);
+void stack_push(Stack *stack, int value);
+int stack_pop(Stack *stack);
+void stack_free(Stack *stack);
 
-// Function to push an element onto the stack
-void push(struct Stack* stack, int value);
+#endif
 
-// Function to pop an element from the stack
-int pop(struct Stack* stack) ;
-
-// Function to peek at the top element of the stack
-int top(struct Stack* stack) ;

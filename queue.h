@@ -1,18 +1,28 @@
+#ifndef QUEUE_H
+#define QUEUE_H
 
-// Function to initialize the queue
-void initQueue(struct Queue* queue);
+#include <stdbool.h>
+#include <stddef.h>
 
-// Function to check if the queue is full
-int isFull(struct Queue* queue);
+// Define the structure for a Queue node
+typedef struct QueueNode {
+    int data;
+    struct QueueNode *next;
+} QueueNode;
 
-// Function to check if the queue is empty
-int isEmpty(struct Queue* queue);
+// Define the structure for the Queue itself
+typedef struct {
+    QueueNode *front;
+    QueueNode *rear;
+    size_t size;
+} Queue;
 
-// Function to enqueue (add) an element to the queue
-void enqueue(struct Queue* queue, int value);
+// Function declarations
+void queue_init(Queue *queue);
+void queue_enqueue(Queue *queue, int value);
+int queue_dequeue(Queue *queue);
+bool queue_is_empty(Queue *queue);
+size_t queue_size(Queue *queue);
+void queue_free(Queue *queue);
 
-// Function to dequeue (remove) an element from the queue
-int dequeue(struct Queue* queue) ;
-
-// Function to peek at the front element of the queue
-int peek(struct Queue* queue);
+#endif

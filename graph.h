@@ -1,14 +1,31 @@
-// Function to create a new adjacency list node
-struct AdjListNode* createNode(int dest) ;
+#ifndef GRAPH_H
+#define GRAPH_H
 
-// Function to create a graph with V vertices
-struct Graph* createGraph(int V);
+#include <stdbool.h>
+#include <stddef.h>
 
-// Function to add an edge to an undirected graph
-void addEdge(struct Graph* graph, int src, int dest) ;
+// Structure for an adjacency list node
+typedef struct AdjListNode {
+    int dest;
+    struct AdjListNode* next;
+} AdjListNode;
 
-// Function to print the adjacency list representation of the graph
-void printGraph(struct Graph* graph);
+// Structure for an adjacency list
+typedef struct {
+    AdjListNode* head;
+} AdjList;
 
-// Function to free memory allocated for the graph
-void freeGraph(struct Graph* graph);
+// Structure for the graph
+typedef struct {
+    int V; // Number of vertices
+    AdjList* array;
+} Graph;
+
+// Function declarations
+Graph* create_graph(int V);
+void add_edge(Graph* graph, int src, int dest);
+void print_graph(Graph* graph);
+void free_graph(Graph* graph);
+
+#endif
+
