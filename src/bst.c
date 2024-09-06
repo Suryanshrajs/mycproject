@@ -154,21 +154,21 @@ void bst_in_order_traversal(TreeNode *node) {
 }
 
 // Pre-order traversal of the binary search tree
-void bst_preorder_traversal(TreeNode *node, void (*visit)(int)) {
-    if (node != NULL) {
-        visit(node->data);
-        bst_preorder_traversal(node->left, visit);
-        bst_preorder_traversal(node->right, visit);
-    }
+void bst_preorder_traversal(TreeNode *node) {
+    if(node == NULL) return;
+        printf("%d", node->data);
+        bst_preorder_traversal(node->left);
+        bst_preorder_traversal(node->right);
+    
 }
 
 // Post-order traversal of the binary search tree
-void bst_postorder_traversal(TreeNode *node, void (*visit)(int)) {
-    if (node != NULL) {
-       bst_postorder_traversal(node->left, visit);
-        bst_postorder_traversal(node->right, visit);
-        visit(node->data);
-    }
+void bst_postorder_traversal(TreeNode *node) {
+    if (node == NULL) return ;
+       bst_postorder_traversal(node->left);
+        bst_postorder_traversal(node->right);
+        printf("%d", node->data);
+    
 }
 
 // Free the binary search tree
