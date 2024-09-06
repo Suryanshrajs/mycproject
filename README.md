@@ -155,8 +155,8 @@ The repository is organized as follows:
     queue.c, queue.h      # Queue
     stack.c, stack.h      # Stack
     vector.c, vector.h    # Vector
-    searchingAlgo.c, searchingAlgo.h # Searching Algorithms
-    sortingAlgo.c, sortingAlgo.h     # Sorting Algorithms
+    searching.c, searching.h # Searching Algorithms
+    sorting.c, sorting.h     # Sorting Algorithms
 
 /program.c                   # Example usage
 /README.md                # Project documentation
