@@ -1,6 +1,3 @@
-Certainly! Here's an enhanced and more detailed `README.md` file for your STL library in C:
-
-```markdown
 # C Standard Template Library (STL) - Data Structures and Algorithms
 
 Welcome to the **C Standard Template Library (STL)**! This library is a comprehensive collection of fundamental data structures and algorithms implemented in pure C, inspired by the C++ STL. Whether you are building a small project or working on a larger software system, this library is designed to provide reusable, efficient, and modular components for various computational needs.
@@ -40,8 +37,8 @@ In addition to data structures, the library implements various classical algorit
 ### Cloning the Repository
 To get started with this library, clone the repository from GitHub:
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/suryanshrajs/mycproject.git
+cd mycproject
 ```
 
 ### Compiling the Library
@@ -49,70 +46,102 @@ This library is designed to be compiled using `gcc` or any other C compiler. Sim
 
 Example of compiling a program that uses the vector and sorting algorithm:
 ```bash
-gcc -o main main.c vector.c sorting_algo.c
+gcc -o program program.c vector.c sortingAlgo.c
 ```
 
 ## 🔍 How to Use
 
-### Binary Search Tree (BST)
-BST supports efficient searching, insertion, and deletion:
-```c
-#include "bst.h"
 
-int main() {
-    bst_t *tree = bst_create();
-    bst_insert(tree, 50);
-    bst_insert(tree, 30);
-    bst_insert(tree, 70);
-    
-    bst_node_t *found = bst_search(tree, 70);
-    if (found) {
-        printf("Node with key 70 found!\n");
-    }
-
-    bst_destroy(tree);
-    return 0;
-}
-```
-
-### Hash Table
-Use a hash table for efficient key-value mapping:
-```c
+#include <stdio.h>
+#include "vector.h"
+#include "linkedlist.h"
+#include "stack.h"
 #include "hashtable.h"
-
-int main() {
-    hashtable_t *ht = hashtable_create(100);
-    hashtable_insert(ht, "key1", "value1");
-    hashtable_insert(ht, "key2", "value2");
-
-    char *value = hashtable_search(ht, "key1");
-    if (value) {
-        printf("Found value: %s\n", value);
-    }
-
-    hashtable_destroy(ht);
-    return 0;
-}
-```
-
-### Graph
-Graphs support both directed and undirected modes:
-```c
+#include "queue.h"
+#include "bst.h"
 #include "graph.h"
+#include "heap.h"
 
 int main() {
-    graph_t *graph = graph_create(5);
-    graph_add_edge(graph, 0, 1);
-    graph_add_edge(graph, 0, 4);
-    graph_add_edge(graph, 1, 4);
-    graph_add_edge(graph, 1, 2);
+    // Vector Example
+    printf("----- Vector Example -----\n");
+    Vector vec;
+    vector_init(&vec);
+    vector_push_back(&vec, 10);
+    vector_push_back(&vec, 20);
+    printf("Vector Element: %d\n", vector_get(&vec, 0));
+    vector_free(&vec);
 
-    graph_bfs(graph, 0);  // Perform Breadth-First Search starting from node 0
+    // Linked List Example
+    printf("\n----- Linked List Example -----\n");
+    LinkedList list;
+    list_init(&list);
+    list_append(&list, 10);
+    list_append(&list, 20);
+    list_print(&list);
+    list_free(&list);
 
-    graph_destroy(graph);
+    // Stack Example
+    printf("\n----- Stack Example -----\n");
+    Stack stack;
+    stack_init(&stack);
+    stack_push(&stack, 10);
+    stack_push(&stack, 20);
+    printf("Stack Top Element: %d\n", stack_peek(&stack));
+    stack_pop(&stack);
+    stack_free(&stack);
+
+    // Hashtable Example
+    printf("\n----- Hashtable Example -----\n");
+    HashTable table;
+    hash_table_init(&table, 10);
+    hash_table_insert(&table, "key1", 10);
+    printf("Hashtable Element: %d\n", hash_table_get(&table, "key1"));
+    hash_table_free(&table);
+
+    // Queue Example
+    printf("\n----- Queue Example -----\n");
+    Queue queue;
+    queue_init(&queue);
+    queue_enqueue(&queue, 10);
+    queue_enqueue(&queue, 20);
+    printf("Queue Front Element: %d\n", queue_peek(&queue));
+    queue_dequeue(&queue);
+    queue_free(&queue);
+
+    // Binary Search Tree Example
+    //printf("\n----- Binary Search Tree (BST) Example -----\n");
+    //BST bst;
+    //bst_init(&bst);
+    //bst_insert(&bst, 10);
+    //bst_insert(&bst, 20);
+    //bst_insert(&bst, 5);
+    //bst_in_order_traversal(&bst);
+    //bst_free(&bst);
+
+    // Graph Example
+    printf("\n----- Graph Example -----\n");
+    int V = 5;
+    Graph* graph = create_graph(V);
+    add_edge(graph, 0, 1);
+    add_edge(graph, 0, 4);
+    add_edge(graph, 1, 2);
+    print_graph(graph);
+    free_graph(graph);
+
+    // Heap Example
+    printf("\n----- Heap Example -----\n");
+    Heap heap;
+    heap_init(&heap, 10, true); // Min-heap
+    heap_insert(&heap, 3);
+    heap_insert(&heap, 2);
+    heap_insert(&heap, 15);
+    printf("Heap Root Element: %d\n", heap_peek(&heap));
+    heap_extract(&heap);
+    heap_free(&heap);
+
     return 0;
 }
-```
 
 ## 📂 Project Structure
 The repository is organized as follows:
@@ -162,6 +191,3 @@ If you have any questions, suggestions, or feedback, please feel free to contact
 - **Suryansh Singh** - Main Developer
 
 Thank you for using this C STL library! I hope it proves to be useful in your projects. Happy coding!
-```
-
-This version is more detailed, includes usage examples for several data structures, and provides a structured view of the project and contribution guidelines. You can modify the contact info and GitHub username as necessary.
