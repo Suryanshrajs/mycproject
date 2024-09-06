@@ -21,7 +21,7 @@ void bst_init(BST *tree);
 TreeNode* bst_insert(BST *tree, int value);
 TreeNode* bst_find(BST *tree, int value);
 bool bst_delete(BST *tree, int value);
-void bst_inorder_traversal(TreeNode *node, void (*visit)(int));
+void bst_in_order_traversal(TreeNode *node);
 void bst_preorder_traversal(TreeNode *node, void (*visit)(int));
 void bst_postorder_traversal(TreeNode *node, void (*visit)(int));
 void bst_free(BST *tree);

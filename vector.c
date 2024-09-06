@@ -21,3 +21,6 @@ void vector_free(Vector *vec) {
     vec->size = 0;
     vec->capacity = 0;
 }
+int vector_get(Vector*vec,int ind){
+    return vec->data[ind];
+}

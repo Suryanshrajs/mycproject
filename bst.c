@@ -1,5 +1,6 @@
 #include "bst.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 // Initialize the binary search tree
 void bst_init(BST *tree) {
@@ -128,7 +129,7 @@ bool bst_delete(BST *tree, int value) {
         } else if (is_left_child) {
             parent->left = current->left;
         } else {
-            parent->right = current->left;
+              parent->right = current->left;
         }
         free(current);
     }
@@ -145,12 +146,11 @@ bool bst_delete(BST *tree, int value) {
 }
 
 // In-order traversal of the binary search tree
-void bst_inorder_traversal(TreeNode *node, void (*visit)(int)) {
-    if (node != NULL) {
-        bst_inorder_traversal(node->left, visit);
-        visit(node->data);
-        bst_inorder_traversal(node->right, visit);
-    }
+void bst_in_order_traversal(TreeNode *node) {
+    if(node==NULL) return;
+    bst_in_order_traversal(node->left);
+    printf("%d ",node->data);
+    bst_in_order_traversal(node->right);
 }
 
 // Pre-order traversal of the binary search tree
@@ -165,7 +165,7 @@ void bst_preorder_traversal(TreeNode *node, void (*visit)(int)) {
 // Post-order traversal of the binary search tree
 void bst_postorder_traversal(TreeNode *node, void (*visit)(int)) {
     if (node != NULL) {
-        bst_postorder_traversal(node->left, visit);
+       bst_postorder_traversal(node->left, visit);
         bst_postorder_traversal(node->right, visit);
         visit(node->data);
     }

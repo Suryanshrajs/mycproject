@@ -1,6 +1,6 @@
 #include "linkedlist.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 void list_init(LinkedList *list) {
     list->head = NULL;
 }
@@ -32,4 +32,11 @@ void list_free(LinkedList *list) {
     }
 
     list->head = NULL;
+}
+void list_print(LinkedList *list){
+    Node* cur=list->head;
+    while(cur){
+      printf("%d ",cur->data);
+      cur = cur->next;
+    }
 }

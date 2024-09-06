@@ -12,5 +12,5 @@ typedef struct {
 void vector_init(Vector *vec);
 void vector_push_back(Vector *vec, int value);
 void vector_free(Vector *vec);
-
+int vector_get(Vector *vec,int ind);
 #endif

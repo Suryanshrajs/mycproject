@@ -29,3 +29,6 @@ void stack_free(Stack *stack) {
         stack_pop(stack);
     }
 }
+int stack_peek(Stack *stack){
+    return stack->top->data;
+}

@@ -14,6 +14,6 @@ void stack_init(Stack *stack);
 void stack_push(Stack *stack, int value);
 int stack_pop(Stack *stack);
 void stack_free(Stack *stack);
-
+int stack_peek(Stack *stack);
 #endif
 

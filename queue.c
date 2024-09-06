@@ -65,3 +65,7 @@ void queue_free(Queue *queue) {
         queue_dequeue(queue);
     }
 }
+int queue_peek(Queue *queue){
+    return queue->front->data;
+}
+ 

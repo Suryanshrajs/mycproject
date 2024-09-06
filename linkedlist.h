@@ -13,5 +13,5 @@ typedef struct {
 void list_init(LinkedList *list);
 void list_append(LinkedList *list, int value);
 void list_free(LinkedList *list);
-
+void list_print(LinkedList *list);
 #endif

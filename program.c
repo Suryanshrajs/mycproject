@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include "vector.h"
 #include "linkedlist.h"
@@ -21,11 +22,11 @@ int main() {
     // Linked List Example
     printf("\n----- Linked List Example -----\n");
     LinkedList list;
-    linkedlist_init(&list);
-    linkedlist_insert(&list, 10);
-    linkedlist_insert(&list, 20);
-    linkedlist_print(&list);
-    linkedlist_free(&list);
+    list_init(&list);
+    list_append(&list, 10);
+    list_append(&list, 20);
+    list_print(&list);
+    list_free(&list);
 
     // Stack Example
     printf("\n----- Stack Example -----\n");
@@ -39,11 +40,11 @@ int main() {
 
     // Hashtable Example
     printf("\n----- Hashtable Example -----\n");
-    Hashtable table;
-    hashtable_init(&table, 10);
-    hashtable_insert(&table, "key1", 10);
-    printf("Hashtable Element: %d\n", hashtable_get(&table, "key1"));
-    hashtable_free(&table);
+    HashTable table;
+    hash_table_init(&table, 10);
+    hash_table_insert(&table, "key1", 10);
+    printf("Hashtable Element: %d\n", hash_table_get(&table, "key1"));
+    hash_table_free(&table);
 
     // Queue Example
     printf("\n----- Queue Example -----\n");
@@ -56,14 +57,14 @@ int main() {
     queue_free(&queue);
 
     // Binary Search Tree Example
-    printf("\n----- Binary Search Tree (BST) Example -----\n");
-    BST bst;
-    bst_init(&bst);
-    bst_insert(&bst, 10);
-    bst_insert(&bst, 20);
-    bst_insert(&bst, 5);
-    bst_in_order_traversal(&bst);
-    bst_free(&bst);
+    //printf("\n----- Binary Search Tree (BST) Example -----\n");
+    //BST bst;
+    //bst_init(&bst);
+    //bst_insert(&bst, 10);
+    //bst_insert(&bst, 20);
+    //bst_insert(&bst, 5);
+    //bst_in_order_traversal(&bst);
+    //bst_free(&bst);
 
     // Graph Example
     printf("\n----- Graph Example -----\n");
