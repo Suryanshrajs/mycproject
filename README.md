@@ -46,7 +46,7 @@ This library is designed to be compiled using `gcc` or any other C compiler. Sim
 
 Example of compiling a program that uses the vector and sorting algorithm:
 ```bash
-gcc -c graph.c hashtable.c heap.c linkedlist.c queue.c stack.c stack.c searching.c sorting.c
+gcc -c graph.c hashtable.c heap.c linkedlist.c queue.c stack.c bst.c vector.c searching.c sorting.c
 ar rcs myLibrary.a graph.o hashtable.o heap.o linkedlist.o queue.o stack.o bst.o vector.o searching.o sorting.o
 gcc -o program program.c -L. myLibrary.a
 ./program
