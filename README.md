@@ -46,9 +46,15 @@ This library is designed to be compiled using `gcc` or any other C compiler. Sim
 
 Example of compiling a program that uses the vector and sorting algorithm:
 ```bash
-gcc -o program program.c vector.c sortingAlgo.c
+gcc -c graph.c hashtable.c heap.c linkedlist.c queue.c stack.c bst.c vector.c searching.c sorting.c
+ar rcs myLibrary.a graph.o hashtable.o heap.o linkedlist.o queue.o stack.o bst.o vector.o searching.o sorting.o
+gcc -o program program.c -L. myLibrary.a
+./program
 ```
-
+Command when all the files are under src directory
+```bash
+gcc -c src/graph.c src/hashtable.c src/heap.c src/linkedlist.c src/queue.c src/stack.c src/bst.c src/vector.c src/searching.c src/sorting.c
+```
 ## 🔍 How to Use
 
 
@@ -155,8 +161,8 @@ The repository is organized as follows:
     queue.c, queue.h      # Queue
     stack.c, stack.h      # Stack
     vector.c, vector.h    # Vector
-    searchingAlgo.c, searchingAlgo.h # Searching Algorithms
-    sortingAlgo.c, sortingAlgo.h     # Sorting Algorithms
+    searching.c, searching.h # Searching Algorithms
+    sorting.c, sorting.h     # Sorting Algorithms
 
 /program.c                   # Example usage
 /README.md                # Project documentation
