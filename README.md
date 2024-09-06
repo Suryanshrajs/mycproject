@@ -50,9 +50,11 @@ gcc -c graph.c hashtable.c heap.c linkedlist.c queue.c stack.c bst.c vector.c se
 ar rcs myLibrary.a graph.o hashtable.o heap.o linkedlist.o queue.o stack.o bst.o vector.o searching.o sorting.o
 gcc -o program program.c -L. myLibrary.a
 ./program
-
 ```
-
+Command when all the files are under src directory
+```bash
+gcc -c src/graph.c src/hashtable.c src/heap.c src/linkedlist.c src/queue.c src/stack.c src/bst.c src/vector.c src/searching.c src/sorting.c
+```
 ## 🔍 How to Use
 
 
